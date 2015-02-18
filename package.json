@@ -1,0 +1,16 @@
+{
+  "name": "phantom-filmmmaker",
+  "version": "0.0.0",
+  "description": "This module use phantom to make video from a website, with differents parameters (viepwportsize, login, url ....)",
+  "main": "phantom.js",
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "phantomjs": "~1.9.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Florent BEAUCHAMP",
+  "license": "BSD-2-Clause"
+}

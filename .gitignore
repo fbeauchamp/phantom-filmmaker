@@ -1,0 +1,8 @@
+frames/
+ouput/*.mp4
+ouput/*.json
+input/*.json
+*.mp4
+*.png
+node_modules
+.idea

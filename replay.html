@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>REplay</title>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+<div id="video-container" style="position:relative">
+
+    <video   id="video" style="position:relative">
+        <source src="./Admin-desktop.mp4" type="video/mp4" />
+        Ici l'alternative à la vidéo : un lien de téléchargement, un message, etc.
+    </video>
+    <div id="overlay" style="position:absolute;width:100%;bottom:0;left:0;height:100px;background-color:rgba(255,255,255,0.5) "></div>
+</div>
+
+
+<script>
+    var scenario = [{"type":"open","url":"http://mobops.sdis71.fr/dist/","start":null,"ready":1,"end":5510},{"type":"fill","target":"input#login","label":"Saissez votre identifiant ","value":"fbeauchamp","start":5494,"ready":6040,"dimensions":{"height":20,"left":466,"top":251,"width":320},"end":6265},{"type":"fill","label":"Saissez votre mot de passe ","target":"input#password","value":"sdis","start":6249,"ready":6783,"dimensions":{"height":20,"left":466,"top":325,"width":320},"end":6962},{"type":"click","target":"form#login-form button","delay_before_hover":10,"delay_before_click":10,"start":6946,"ready":7492,"dimensions":{"height":20,"left":466,"top":404,"width":96},"hover":7731,"click":8075,"end":8075},{"type":"click","label":"Cliquez sur une opération pour en voir le détail","target":"#details .list-group-item:nth-child(4) .center.label a","start":8059,"ready":13188,"dimensions":{"height":14,"left":88.50263977050781,"top":458.4695739746094,"width":119},"hover":14992,"click":16955,"end":16955},{"type":"click","label":"Cliquez sur le camion pour voir les moyens engagés ","target":".fa.fa-fw.fa-truck","start":16941,"ready":20242,"dimensions":{"height":17,"left":354,"top":163,"width":21},"hover":23107,"click":25849,"end":25849},{"type":"click","label":"Cliquez sur l\"enveloppe pour les messages échangés ","target":".fa.fa-fw.fa-envelope-o","start":25833,"ready":28699,"dimensions":{"height":17,"left":354,"top":208,"width":21},"hover":31395,"click":34098,"end":34098},{"type":"click","label":"Cliquez sur le téléphone pour voir les contacts des élus ","target":".fa.fa-fw.fa-phone","start":34082,"ready":36972,"dimensions":{"height":17,"left":354,"top":253,"width":21},"hover":39789,"click":42487,"end":42488},{"type":"click","label":"Cliquez sur le titre pour revenir  à la liste des opérations ","target":"a.btn.title","start":42472,"ready":45199,"dimensions":{"height":25,"left":11,"top":11,"width":88},"hover":47924,"click":50552,"end":50552},{"type":"click","label":"Cliquez sur cette icône pour voir \"ma page\" (les informations vous concernant)","target":".fa.fa-fw.fa-user","start":50536,"ready":53296,"dimensions":{"height":17,"left":354,"top":120,"width":21},"hover":55052,"click":56844,"end":56844},{"type":"click","delay_before_hover":3000,"label":"Cliquez sur cette icône pour voir la disponibilité de tout le département","target":".fa.fa-fw.fa-users","start":56828,"ready":58398,"dimensions":{"height":17,"left":354,"top":208,"width":21},"hover":61954,"click":64003,"end":64003},{"type":"click","label":"Cliquez sur unc entre pour avoir plus de détail sur un centre","target":"a[href=\"#dispos/AUT/AUTUN\"]","start":63987,"ready":66555,"dimensions":{"height":22,"left":27,"top":196,"width":66},"hover":68624,"click":70681,"end":70681},{"type":"click","label":"Cliquez sur cette icone pour ouvrir la fenêtre de déconnection","target":".fa.fa-fw.fa-sign-out","start":70666,"ready":72610,"dimensions":{"height":18,"left":1235,"top":19,"width":22},"hover":74412,"click":76306,"end":76306},{"type":"click","label":"Cliquez  pour vous deconnecter réellement","target":"a[href=\"#logout\"]","start":76290,"ready":78265,"dimensions":{"height":20,"left":356,"top":85,"width":542},"hover":80392,"click":82461,"end":82461}];
+    var $cursor = $('<div></div>');
+    $cursor.css({
+        position: 'absolute',
+        'z-index': 5000,
+        'background-color': 'rgba(255,255,0,0.5)',
+        width: '50px',
+        height: '50px',
+        'border-radius':'50%',
+        top:'100px',
+        left:'100px'
+
+    });
+
+    var video = document.getElementById("video");
+    var $textoverlay = $('#overlay');
+    $cursor.appendTo('#video-container');
+
+    //Todo : listen to pause/buffering and stop events
+    scenario.forEach(function(scene){
+        if(scene.label){
+            setTimeout(function(){
+                $textoverlay.text(scene.label).fadeIn();
+                setTimeout(function(){
+                    $textoverlay.fadeOut();
+                },scene.end -500)
+            },scene.start+500)
+        }
+
+        if(scene.hover){
+            setTimeout(function(){
+                console.log(' move your body')
+                $cursor.animate({
+                    left:(scene.dimensions.left +scene.dimensions.width/2-25)+'px',
+                    top:(scene.dimensions.top +scene.dimensions.height/2-25)+'px'
+                })
+            },scene.hover)
+        }
+    })
+    video.play();
+
+
+</script>
+</body>
+</html>

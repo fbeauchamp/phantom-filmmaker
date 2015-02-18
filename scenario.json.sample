@@ -1,0 +1,157 @@
+{
+  "settings": {
+    "base_url": "http://mobops.eswhogbreszgboin.fr/dist/",
+    "page": {
+      "settings": {
+        "userAgent": "casper"
+      }
+    },
+    "fps":10,
+    "ffmpeg_executable":"/usr/bin/avconv"
+  },
+  "variants": [
+    {
+      "label": "Admin-desktop",
+      "login": "rohgdorthg",
+      "password": "owusrdhgbn",
+      "page": {
+        "viewportSize": {
+          "width": 1280,
+          "height": 1024
+        },
+        "clipRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 1024
+        }
+      }
+    },
+    {
+      "label": "Admin-htcone",
+      "login": "rohgdorthg",
+      "password": "owusrdhgbn",
+      "page": {
+        "viewportSize": {
+          "width": 360,
+          "height": 640
+        },
+        "clipRect": {
+          "left": 0,
+          "top": 0,
+          "width": 360,
+          "height": 640
+        }
+      }
+    },
+    {
+      "label": "User-desktop",
+      "login": "dcousanca",
+      "password": "eswhogbresùgboin",
+      "page": {
+        "viewportSize": {
+          "width": 1280,
+          "height": 1024
+        },
+        "clipRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1280,
+          "height": 1024
+        }
+      }
+    },
+    {
+      "label": "user-htcone",
+      "login": "dcousanca",
+      "password": "eswhogbresùgboin",
+      "page": {
+        "viewportSize": {
+          "width": 360,
+          "height": 640
+        },
+        "clipRect": {
+          "left": 0,
+          "top": 0,
+          "width": 360,
+          "height": 640
+        }
+      }
+    }
+  ],
+  "actions": [
+    {
+      "type": "open",
+      "url": "##base_url"
+    },
+    {
+      "type": "fill",
+      "target": "input#login",
+      "label": "Saissez votre identifiant ",
+      "value": "##login"
+    },
+    {
+      "type": "fill",
+      "label": "Saissez votre mot de passe ",
+      "target": "input#password",
+      "value": "##password"
+    },
+    {
+      "type": "click",
+      "target": "form#login-form button",
+      "delay_before_hover": 10,
+      "delay_before_click": 10
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur une opération pour en voir le détail",
+      "target": "#details .list-group-item:nth-child(4) .center.label a"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur le camion pour voir les moyens engagés ",
+      "target": ".fa.fa-fw.fa-truck"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur l\"enveloppe pour les messages échangés ",
+      "target": ".fa.fa-fw.fa-envelope-o"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur le téléphone pour voir les contacts des élus ",
+      "target": ".fa.fa-fw.fa-phone"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur le titre pour revenir  à la liste des opérations ",
+      "target": "a.btn.title"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur cette icône pour voir \"ma page\" (les informations vous concernant)",
+      "target": ".fa.fa-fw.fa-user"
+    },
+    {
+      "type": "click",
+      "delay_before_hover": 3000,
+      "label": "Cliquez sur cette icône pour voir la disponibilité de tout le département",
+      "target": ".fa.fa-fw.fa-users"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur unc entre pour avoir plus de détail sur un centre",
+      "target": "a[href=\"#dispos/AUT/AUTUN\"]"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez sur cette icone pour ouvrir la fenêtre de déconnection",
+      "target": ".fa.fa-fw.fa-sign-out"
+    },
+    {
+      "type": "click",
+      "label": "Cliquez  pour vous deconnecter réellement",
+      "target": "a[href=\"#logout\"]"
+    }
+  ]
+}
